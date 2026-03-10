@@ -1,7 +1,49 @@
 import React, { useState } from 'react';
-import { Send, Loader2, Compass } from 'lucide-react';
 import { generateItinerary } from '../services/geminiService';
 import { TripRequest, PlannerState } from '../types';
+
+type IconProps = {
+  className?: string;
+};
+
+function LoaderIcon({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <path
+        d="M12 2a10 10 0 1 0 10 10"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function CompassIcon({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
+      <path
+        d="M14.8 9.2L13.4 13.4L9.2 14.8L10.6 10.6L14.8 9.2Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
   const lines = content.split('\n');
@@ -102,7 +144,7 @@ const TripPlanner: React.FC = () => {
                 disabled={state.isLoading}
                 className="w-full py-8 bg-white text-black font-bold uppercase tracking-[0.4em] text-[10px] rounded-sm hover:bg-[#bfdce0] transition-all disabled:opacity-20 flex items-center justify-center gap-4"
               >
-                {state.isLoading ? <Loader2 className="animate-spin w-5 h-5" /> : "Initiate Synthesis"}
+                {state.isLoading ? <LoaderIcon className="animate-spin w-5 h-5" /> : "Initiate Synthesis"}
               </button>
             </form>
           </div>
@@ -111,7 +153,7 @@ const TripPlanner: React.FC = () => {
           <div className="bg-transparent min-h-[600px] flex flex-col">
             {!state.result && !state.isLoading && (
               <div className="flex-1 flex flex-col items-center justify-center text-white/5 border border-white/5 rounded-xl border-dashed">
-                <Compass className="w-16 h-16 mb-8 opacity-10" />
+                <CompassIcon className="w-16 h-16 mb-8 opacity-10" />
                 <span className="text-[10px] uppercase tracking-[0.5em] font-bold opacity-30">Awaiting Input Sequence</span>
               </div>
             )}

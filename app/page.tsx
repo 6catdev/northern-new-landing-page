@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import ScrollFadeUp from '@/components/ScrollFadeUp';
 
 export default function Home() {
   const destinations = [
@@ -128,7 +129,6 @@ export default function Home() {
               <a className="text-sm font-semibold text-black hover:text-gray-700 transition-colors cursor-pointer" onClick={() => handleNavClick('what-we-do')}>What We Do</a>
               <a className="text-sm font-semibold text-black hover:text-gray-700 transition-colors cursor-pointer" onClick={() => handleNavClick('destinations')}>Destinations</a>
               <a className="text-sm font-semibold text-black hover:text-gray-700 transition-colors cursor-pointer" onClick={() => handleNavClick('neptune')}>Neptune</a>
-              <a className="text-sm font-semibold text-black hover:text-gray-700 transition-colors cursor-pointer" onClick={() => handleNavClick('contact')}>Contact</a>
             </nav>
             <div className="hidden lg:block">
               <button className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-colors shadow-lg shadow-[#A683BD]/30">
@@ -149,12 +149,11 @@ export default function Home() {
         </div>
         <div className={`lg:hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden bg-white/95 backdrop-blur-md border-t border-black/10`}>
           <div className="max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <nav className="flex flex-col gap-3">
+             <nav className="flex flex-col gap-3">
               <button className="text-left text-base font-semibold text-black hover:text-gray-700 transition-colors" onClick={() => handleNavClick('about')}>About</button>
               <button className="text-left text-base font-semibold text-black hover:text-gray-700 transition-colors" onClick={() => handleNavClick('what-we-do')}>What We Do</button>
               <button className="text-left text-base font-semibold text-black hover:text-gray-700 transition-colors" onClick={() => handleNavClick('destinations')}>Destinations</button>
               <button className="text-left text-base font-semibold text-black hover:text-gray-700 transition-colors" onClick={() => handleNavClick('neptune')}>Neptune</button>
-              <button className="text-left text-base font-semibold text-black hover:text-gray-700 transition-colors" onClick={() => handleNavClick('contact')}>Contact</button>
               <button className="mt-2 bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-colors w-full shadow-lg shadow-[#A683BD]/30">
                 Partner With Us
               </button>
@@ -171,39 +170,41 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         <div className="relative z-10 max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-0 sm:mt-20">
-          <div className="flex flex-col items-center gap-8">
-            <div className="space-y-6 max-w-4xl">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-2xl">
-                Elevating Thai <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] brightness-125">Travel Experiences</span>
-              </h1>
-              <p className="text-base sm:text-xl text-gray-100 max-w-2xl mx-auto drop-shadow-md">
-                The premier corporate travel group connecting the world to the hidden gems of Northern and Southern Thailand.
-              </p>
+          <ScrollFadeUp>
+            <div className="flex flex-col items-center gap-8">
+              <div className="space-y-6 max-w-4xl">
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-2xl">
+                  Elevating Thai <br/>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] brightness-125">Travel Experiences</span>
+                </h1>
+                <p className="text-base sm:text-xl text-gray-100 max-w-2xl mx-auto drop-shadow-md">
+                  The premier corporate travel group connecting the world to the hidden gems of Northern and Southern Thailand.
+                </p>
+              </div>
+              <ul className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                <li className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-primary-400 brightness-125 bg-white/10 p-1 rounded-full text-base">check_circle</span>
+                  <span className="text-sm sm:text-base font-semibold text-white tracking-wide drop-shadow-sm">Deep Local Expertise</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-primary-400 brightness-125 bg-white/10 p-1 rounded-full text-base">check_circle</span>
+                  <span className="text-sm sm:text-base font-semibold text-white tracking-wide drop-shadow-sm">Premium Owned Fleet</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-primary-400 brightness-125 bg-white/10 p-1 rounded-full text-base">check_circle</span>
+                  <span className="text-sm sm:text-base font-semibold text-white tracking-wide drop-shadow-sm">Curated Private Journeys</span>
+                </li>
+              </ul>
+              <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4 w-full">
+                <button className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-base sm:text-lg font-bold px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl transition-all hover:scale-105 shadow-xl shadow-[#A683BD]/30 w-full sm:w-auto">
+                  Explore Tours
+                </button>
+                <button className="bg-transparent border-2 border-white text-white text-base sm:text-lg font-bold px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl transition-all hover:scale-105 hover:bg-white/10 w-full sm:w-auto">
+                  Contact Us
+                </button>
+              </div>
             </div>
-            <ul className="flex flex-wrap justify-center gap-4 sm:gap-6">
-              <li className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary-400 brightness-125 bg-white/10 p-1 rounded-full text-base">check_circle</span>
-                <span className="text-sm sm:text-base font-semibold text-white tracking-wide drop-shadow-sm">Deep Local Expertise</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary-400 brightness-125 bg-white/10 p-1 rounded-full text-base">check_circle</span>
-                <span className="text-sm sm:text-base font-semibold text-white tracking-wide drop-shadow-sm">Premium Owned Fleet</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary-400 brightness-125 bg-white/10 p-1 rounded-full text-base">check_circle</span>
-                <span className="text-sm sm:text-base font-semibold text-white tracking-wide drop-shadow-sm">Curated Private Journeys</span>
-              </li>
-            </ul>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4 w-full">
-              <button className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-base sm:text-lg font-bold px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl transition-all hover:scale-105 shadow-xl shadow-[#A683BD]/30 w-full sm:w-auto">
-                Explore Tours
-              </button>
-              <button className="bg-transparent border-2 border-white text-white text-base sm:text-lg font-bold px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl transition-all hover:scale-105 hover:bg-white/10 w-full sm:w-auto">
-                Contact Us
-              </button>
-            </div>
-          </div>
+          </ScrollFadeUp>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
           <div className="animate-bounce flex flex-col items-center gap-2">
@@ -218,22 +219,25 @@ export default function Home() {
         <div className="max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Text Content */}
-            <div>
-              <span className="text-primary-600 font-bold tracking-wider text-sm uppercase mb-2 block">About Us</span>
-              <h2 className="text-3xl lg:text-4xl font-bold text-neutral-text-main mb-6">
-                Northern All Star is a <span className="text-primary-600">Thailand-based travel</span> and experiences group dedicated to elevating Thai tourism to international standards.
-              </h2>
-              <div className="space-y-4">
-                <p className="text-lg text-neutral-text-sub leading-relaxed">
-                  We believe great journeys are built on authenticity, thoughtful design, and strong local partnerships. Our goal is to modernize Thailand&apos;s tourism industry while preserving the unique character of each destination.
-                </p>
-                <p className="text-lg text-neutral-text-sub leading-relaxed">
-                  By combining local expertise with global perspectives, we help transform traditional tourism into meaningful, high-quality experiences for travelers from around the world.
-                </p>
+            <ScrollFadeUp>
+              <div>
+                <span className="text-primary-600 font-bold tracking-wider text-sm uppercase mb-2 block">About Us</span>
+                <h2 className="text-3xl lg:text-4xl font-bold text-neutral-text-main mb-6">
+                  Northern All Star is a <span className="text-primary-600">Thailand-based travel</span> and experiences group dedicated to elevating Thai tourism to international standards.
+                </h2>
+                <div className="space-y-4">
+                  <p className="text-lg text-neutral-text-sub leading-relaxed">
+                    We believe great journeys are built on authenticity, thoughtful design, and strong local partnerships. Our goal is to modernize Thailand&apos;s tourism industry while preserving the unique character of each destination.
+                  </p>
+                  <p className="text-lg text-neutral-text-sub leading-relaxed">
+                    By combining local expertise with global perspectives, we help transform traditional tourism into meaningful, high-quality experiences for travelers from around the world.
+                  </p>
+                </div>
               </div>
-            </div>
+            </ScrollFadeUp>
 
             {/* Right - Cards */}
+            <ScrollFadeUp delay={0.2}>
               <div className="grid grid-cols-1 gap-6">
                 <div className="bg-white p-8 rounded-xl border border-neutral-border shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
                   <div className="w-14 h-14 flex-shrink-0 rounded-full bg-primary-100 flex items-center justify-center text-primary-600">
@@ -263,6 +267,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </ScrollFadeUp>
           </div>
         </div>
       </section>
@@ -270,52 +275,62 @@ export default function Home() {
       {/* What We Do Section */}
       <section id="what-we-do" className="bg-white py-20 md:py-28 lg:py-32 2xl:py-28 relative z-10">
         <div className="max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 mb-16">
-            <div className="lg:w-1/3">
-              <h2 className="text-3xl font-bold text-neutral-text-main mb-4">What We Do</h2>
-              <div className="h-1 w-20 bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] rounded-full"></div>
-            </div>
-            <div className="lg:w-2/3 space-y-6">
-              <p className="text-lg md:text-xl text-neutral-text-sub">
-                We work closely with local operators and communities to develop curated tours, activities, and experiences that meet international standards in service, safety, and quality.
-              </p>
-              <div>
-                <p className="text-lg text-neutral-text-main font-semibold mb-3">Our network spans Thailand&apos;s key destinations, including:</p>
+          <ScrollFadeUp>
+            <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 mb-16">
+              <div className="lg:w-1/3">
+                <h2 className="text-3xl font-bold text-neutral-text-main mb-4">What We Do</h2>
+                <div className="h-1 w-20 bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] rounded-full"></div>
+              </div>
+              <div className="lg:w-2/3 space-y-6">
+                <p className="text-lg md:text-xl text-neutral-text-sub">
+                  We work closely with local operators and communities to develop curated tours, activities, and experiences that meet international standards in service, safety, and quality.
+                </p>
+                <div>
+                  <p className="text-lg text-neutral-text-main font-semibold mb-3">Our network spans Thailand&apos;s key destinations, including:</p>
+                  <p className="text-lg text-neutral-text-sub">
+                    Chiang Rai · Chiang Mai · Bangkok · Pattaya · Chonburi · Samui · Krabi · Phang Nga · Phuket
+                  </p>
+                </div>
                 <p className="text-lg text-neutral-text-sub">
-                  Chiang Rai · Chiang Mai · Bangkok · Pattaya · Chonburi · Samui · Krabi · Phang Nga · Phuket
+                  Beyond creating products, we support local tourism businesses by connecting them with global travelers, sharing know-how, and growing sustainably together.
                 </p>
               </div>
-              <p className="text-lg text-neutral-text-sub">
-                Beyond creating products, we support local tourism businesses by connecting them with global travelers, sharing know-how, and growing sustainably together.
-              </p>
             </div>
-          </div>
+          </ScrollFadeUp>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
-            <div className="group border border-neutral-border rounded-xl p-6 hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
-              <div className="h-48 bg-neutral-100 rounded-lg mb-6 overflow-hidden relative">
-                <img alt="Tourists walking on a beach" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABb2G_dZhBTcvtWffNAsi3ZR2WI7um8ejaCUKaxk89zWmhI8Ctjw8qt0sjlJFLsFjo4dw5JdA5v_Icz3qS69X7dkB1xJyEww0NdhFz5IC5bS7gZhHzjwppUIcnr0pb-jTbe84YHiRR-4s_s8wBgCjJwY-B8VPv1gGRM5UJ3Vx7XuGJ3MBcZnL8OB-M2kxfNsEvcX3JBIf8eQO_SgEND3fh_QD3GOjT2P53FcT6jefthmpC1vvCitQQU89XUhvhcVSabN-4RRkMaS8"/>
+            <ScrollFadeUp delay={0.1}>
+              <div className="group border border-neutral-border rounded-xl p-6 hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
+                <div className="h-48 bg-neutral-100 rounded-lg mb-6 overflow-hidden relative">
+                  <img alt="Tourists walking on a beach" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABb2G_dZhBTcvtWffNAsi3ZR2WI7um8ejaCUKaxk89zWmhI8Ctjw8qt0sjlJFLsFjo4dw5JdA5v_Icz3qS69X7dkB1xJyEww0NdhFz5IC5bS7gZhHzjwppUIcnr0pb-jTbe84YHiRR-4s_s8wBgCjJwY-B8VPv1gGRM5UJ3Vx7XuGJ3MBcZnL8OB-M2kxfNsEvcX3JBIf8eQO_SgEND3fh_QD3GOjT2P53FcT6jefthmpC1vvCitQQU89XUhvhcVSabN-4RRkMaS8"/>
+                </div>
+                <h3 className="text-lg font-bold text-neutral-text-main mb-2">Curated Tours</h3>
+                <p className="text-sm 2xl:text-base text-neutral-text-sub">Develop tours and activities that meet international standards in service, safety, and quality</p>
               </div>
-              <h3 className="text-lg font-bold text-neutral-text-main mb-2">Curated Tours</h3>
-              <p className="text-sm 2xl:text-base text-neutral-text-sub">Develop tours and activities that meet international standards in service, safety, and quality</p>
-            </div>
-            <div className="group border border-neutral-border rounded-xl p-6 hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
-              <div className="h-48 bg-neutral-100 rounded-lg mb-6 overflow-hidden relative">
-                <img alt="Life jacket and safety equipment on a boat" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnUdRXrGKQSZjeU1vYA53wwUVSjqJBcy-naeckU38MtgBKeDciQjDRNINd45ZplGSVHAc56l0FJBCGwwxOi1Ukrc6-A4ERC6GVA7QVqPFofKnP3SjLr8VACJaw8zKGhfBhbVpAWVRkaa7OIGDgWKQAOHa2nuSeFq2oOQCpS28G3fGVQ2CAU8ORBP35gBEh4guJR2UqwCLuvgLpM7LX-r_etVdTF3aBHsmS-Hh-xbt9rKCA97ktSx3MJdUnpwSquqSKHStRO9GILM0"/>
+            </ScrollFadeUp>
+            <ScrollFadeUp delay={0.2}>
+              <div className="group border border-neutral-border rounded-xl p-6 hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
+                <div className="h-48 bg-neutral-100 rounded-lg mb-6 overflow-hidden relative">
+                  <img alt="Life jacket and safety equipment on a boat" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnUdRXrGKQSZjeU1vYA53wwUVSjqJBcy-naeckU38MtgBKeDciQjDRNINd45ZplGSVHAc56l0FJBCGwwxOi1Ukrc6-A4ERC6GVA7QVqPFofKnP3SjLr8VACJaw8zKGhfBhbVpAWVRkaa7OIGDgWKQAOHa2nuSeFq2oOQCpS28G3fGVQ2CAU8ORBP35gBEh4guJR2UqwCLuvgLpM7LX-r_etVdTF3aBHsmS-Hh-xbt9rKCA97ktSx3MJdUnpwSquqSKHStRO9GILM0"/>
+                </div>
+                <h3 className="text-lg font-bold text-neutral-text-main mb-2">Safety &amp; Service</h3>
+                <p className="text-sm 2xl:text-base text-neutral-text-sub">Ensure every experience meets high standards of professionalism and care</p>
               </div>
-              <h3 className="text-lg font-bold text-neutral-text-main mb-2">Safety &amp; Service</h3>
-              <p className="text-sm 2xl:text-base text-neutral-text-sub">Ensure every experience meets high standards of professionalism and care</p>
-            </div>
-            <div className="group border border-neutral-border rounded-xl p-6 hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
-              <div className="h-48 bg-neutral-100 rounded-lg mb-6 overflow-hidden relative">
-                <img alt="Local community members interacting" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1r_DVTxUbJPgfMJmEL5_ds1ta7F7woIbaOCdnrz4M-TKXAsmi4Xzy2Sbuv9S1ORxC7KMW_DLapHSPA_QaJrz-L1re_giI6R83i3fYlR_SBqAO-vJD0FOnuLWvAlkILmWxVBj_Ofoj2H7KtgPSQa9TB47OPXF46pEyyCaqv7nUrn0AhsToBCU4SOzY7rnZknnvcKZh_dav3_l5HiazQl12TTkDc_9Zn14xUokZyyEt8uzOP4ujXmbKyDDzLkdjtlhOQChtLRb8AdU"/>
+            </ScrollFadeUp>
+            <ScrollFadeUp delay={0.3}>
+              <div className="group border border-neutral-border rounded-xl p-6 hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
+                <div className="h-48 bg-neutral-100 rounded-lg mb-6 overflow-hidden relative">
+                  <img alt="Local community members interacting" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1r_DVTxUbJPgfMJmEL5_ds1ta7F7woIbaOCdnrz4M-TKXAsmi4Xzy2Sbuv9S1ORxC7KMW_DLapHSPA_QaJrz-L1re_giI6R83i3fYlR_SBqAO-vJD0FOnuLWvAlkILmWxVBj_Ofoj2H7KtgPSQa9TB47OPXF46pEyyCaqv7nUrn0AhsToBCU4SOzY7rnZknnvcKZh_dav3_l5HiazQl12TTkDc_9Zn14xUokZyyEt8uzOP4ujXmbKyDDzLkdjtlhOQChtLRb8AdU"/>
+                </div>
+                <h3 className="text-lg font-bold text-neutral-text-main mb-2">Community Collaboration</h3>
+                <p className="text-sm 2xl:text-base text-neutral-text-sub">Support local tourism businesses by connecting them with global travelers</p>
               </div>
-              <h3 className="text-lg font-bold text-neutral-text-main mb-2">Community Collaboration</h3>
-              <p className="text-sm 2xl:text-base text-neutral-text-sub">Support local tourism businesses by connecting them with global travelers</p>
-            </div>
+            </ScrollFadeUp>
           </div>
-          <div className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] text-white p-8 md:p-12 rounded-2xl text-center">
-            <h3 className="text-2xl md:text-3xl font-bold tracking-tight">We don&apos;t just sell tours. We build opportunities, platforms, and long-term partnerships.</h3>
-          </div>
+          <ScrollFadeUp>
+            <div className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] text-white p-8 md:p-12 rounded-2xl text-center">
+              <h3 className="text-2xl md:text-3xl font-bold tracking-tight">We don&apos;t just sell tours. We build opportunities, platforms, and long-term partnerships.</h3>
+            </div>
+          </ScrollFadeUp>
         </div>
       </section>
 
@@ -378,41 +393,55 @@ export default function Home() {
       {/* Approach Section */}
       <section className="bg-white py-20 md:py-28 lg:py-32 2xl:py-28 relative z-10">
         <div className="max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-neutral-text-main mb-12 text-center">
-            <span className="text-primary-600">Our</span> Approach
-          </h2>
-          <div className="max-w-2xl mx-auto mb-12 text-center">
-            <h3 className="text-2xl font-bold text-neutral-text-main mb-6">
-              Sustainability. <span className="text-primary-600">Quality</span>. Progress.
-            </h3>
-          </div>
+          <ScrollFadeUp>
+            <h2 className="text-3xl font-bold text-neutral-text-main mb-12 text-center">
+              <span className="text-primary-600">Our</span> Approach
+            </h2>
+          </ScrollFadeUp>
+          <ScrollFadeUp delay={0.1}>
+            <div className="max-w-2xl mx-auto mb-12 text-center">
+              <h3 className="text-2xl font-bold text-neutral-text-main mb-6">
+                Sustainability. <span className="text-primary-600">Quality</span>. Progress.
+              </h3>
+            </div>
+          </ScrollFadeUp>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            <div className="p-6 border-l-4 border-primary-600 bg-background-light">
-              <h3 className="text-lg font-bold mb-3">Responsible Tourism</h3>
-              <p className="text-sm 2xl:text-base text-neutral-text-sub">Tourism that respects communities and nature</p>
-            </div>
-            <div className="p-6 border-l-4 border-neutral-300 bg-background-light">
-              <h3 className="text-lg font-bold mb-3">International Standards</h3>
-              <p className="text-sm 2xl:text-base text-neutral-text-sub">International service standards with local insight</p>
-            </div>
-            <div className="p-6 border-l-4 border-neutral-300 bg-background-light">
-              <h3 className="text-lg font-bold mb-3">Continuous Improvement</h3>
-              <p className="text-sm 2xl:text-base text-neutral-text-sub">Progress through technology and innovation</p>
-            </div>
+            <ScrollFadeUp delay={0.1}>
+              <div className="p-6 border-l-4 border-primary-600 bg-background-light">
+                <h3 className="text-lg font-bold mb-3">Responsible Tourism</h3>
+                <p className="text-sm 2xl:text-base text-neutral-text-sub">Tourism that respects communities and nature</p>
+              </div>
+            </ScrollFadeUp>
+            <ScrollFadeUp delay={0.2}>
+              <div className="p-6 border-l-4 border-neutral-300 bg-background-light">
+                <h3 className="text-lg font-bold mb-3">International Standards</h3>
+                <p className="text-sm 2xl:text-base text-neutral-text-sub">International service standards with local insight</p>
+              </div>
+            </ScrollFadeUp>
+            <ScrollFadeUp delay={0.3}>
+              <div className="p-6 border-l-4 border-neutral-300 bg-background-light">
+                <h3 className="text-lg font-bold mb-3">Continuous Improvement</h3>
+                <p className="text-sm 2xl:text-base text-neutral-text-sub">Progress through technology and innovation</p>
+              </div>
+            </ScrollFadeUp>
           </div>
-          <div className="max-w-4xl mx-auto border border-neutral-200 rounded-2xl p-8 sm:p-10 md:p-12 lg:p-14 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] text-center relative">
-            <span className="material-symbols-outlined absolute top-6 left-8 text-primary-400/20 text-6xl">format_quote</span>
-            <p className="text-xl italic text-neutral-text-main relative z-10 pt-4 leading-relaxed">We believe tourism should grow together with the people behind it — not at their expense.</p>
-          </div>
+          <ScrollFadeUp>
+            <div className="max-w-4xl mx-auto border border-neutral-200 rounded-2xl p-8 sm:p-10 md:p-12 lg:p-14 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] text-center relative">
+              <span className="material-symbols-outlined absolute top-6 left-8 text-primary-400/20 text-6xl">format_quote</span>
+              <p className="text-xl italic text-neutral-text-main relative z-10 pt-4 leading-relaxed">We believe tourism should grow together with the people behind it — not at their expense.</p>
+            </div>
+          </ScrollFadeUp>
         </div>
       </section>
 
       {/* Neptune Brand Section */}
       <section id="neptune" className="bg-white text-neutral-900 py-20 md:py-28 lg:py-32 2xl:py-28 relative z-10 overflow-hidden">
         <div className="max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h2 className="text-3xl font-bold text-neutral-text-main mb-12 text-center">
-            <span className="text-primary-600">Our</span> Brand
-          </h2>
+          <ScrollFadeUp>
+            <h2 className="text-3xl font-bold text-neutral-text-main mb-12 text-center">
+              <span className="text-primary-600">Our</span> Brand
+            </h2>
+          </ScrollFadeUp>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-neutral-200 shadow-sm">
@@ -463,26 +492,36 @@ export default function Home() {
       {/* Vision Section */}
       <section className="bg-background-light py-20 md:py-28 lg:py-32 2xl:py-28 relative z-10">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-neutral-text-main leading-tight mb-8">
-            Our Vision
-          </h2>
-          <p className="text-2xl text-neutral-text-sub mb-8 leading-relaxed">
-            To become a leading Thai travel group that connects local experiences with global travelers — and helps shape the future of tourism in Southeast Asia.
-          </p>
-          <div className="space-y-2 text-lg text-neutral-text-main font-medium">
-            <p>Building better journeys.</p>
-            <p>Growing together.</p>
-            <p>Moving Thailand forward.</p>
-          </div>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] mx-auto rounded-full mt-8"></div>
+          <ScrollFadeUp>
+            <h2 className="text-3xl md:text-5xl font-bold text-neutral-text-main leading-tight mb-8">
+              Our Vision
+            </h2>
+          </ScrollFadeUp>
+          <ScrollFadeUp delay={0.1}>
+            <p className="text-2xl text-neutral-text-sub mb-8 leading-relaxed">
+              To become a leading Thai travel group that connects local experiences with global travelers — and helps shape the future of tourism in Southeast Asia.
+            </p>
+          </ScrollFadeUp>
+          <ScrollFadeUp delay={0.2}>
+            <div className="space-y-2 text-lg text-neutral-text-main font-medium">
+              <p>Building better journeys.</p>
+              <p>Growing together.</p>
+              <p>Moving Thailand forward.</p>
+            </div>
+          </ScrollFadeUp>
+          <ScrollFadeUp delay={0.3}>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] mx-auto rounded-full mt-8"></div>
+          </ScrollFadeUp>
         </div>
       </section>
 
       {/* Logo Marquee Section */}
       <section className="bg-white py-16 md:py-20 relative z-10 overflow-hidden">
-        <div className="max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-          <p className="text-center text-sm font-semibold text-neutral-text-sub uppercase tracking-widest">Trusted by</p>
-        </div>
+        <ScrollFadeUp>
+          <div className="max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+            <p className="text-center text-sm font-semibold text-neutral-text-sub uppercase tracking-widest">Trusted by</p>
+          </div>
+        </ScrollFadeUp>
         <div className="relative overflow-hidden">
           <div className="flex w-max animate-marquee will-change-transform">
             <div className="flex min-w-max items-center gap-8 lg:gap-10 px-6">
@@ -512,60 +551,67 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white pt-16 pb-8 border-t border-neutral-800 relative z-10">
+      <footer className="bg-white text-black pt-16 pb-8 border-t border-black/10 relative z-10">
         <div className="max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8 mb-16">
-            <div className="space-y-4 lg:pr-6">
-              <img
-                src="/logo/logo-white.png"
-                alt="Northern All Star logo"
-                className="h-24 w-auto"
-              />
-              <h3 className="text-lg font-bold tracking-wider">NORTHERN ALL STAR</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Connecting the world to Thailand&apos;s wonders through premium service and local authenticity.
-              </p>
-              <div className="flex gap-4">
-                <a className="text-gray-400 hover:text-primary-600 transition-colors" href="#"><span className="material-symbols-outlined">public</span></a>
-                <a className="text-gray-400 hover:text-primary-600 transition-colors" href="#"><span className="material-symbols-outlined">photo_camera</span></a>
-                <a className="text-gray-400 hover:text-primary-600 transition-colors" href="#"><span className="material-symbols-outlined">mail</span></a>
+            <ScrollFadeUp delay={0.1}>
+              <div className="space-y-4 lg:pr-6">
+                <img
+                  src="/logo/northern-logo.png"
+                  alt="Northern All Star logo"
+                  className="h-[88px] w-[88px] md:h-[104px] md:w-[104px] rounded-lg object-contain"
+                />
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Connecting the world to Thailand&apos;s wonders through premium service and local authenticity.
+                </p>
+                <div className="flex gap-4">
+                  <a className="text-gray-600 hover:text-black transition-colors" href="#"><span className="material-symbols-outlined">public</span></a>
+                  <a className="text-gray-600 hover:text-black transition-colors" href="#"><span className="material-symbols-outlined">photo_camera</span></a>
+                  <a className="text-gray-600 hover:text-black transition-colors" href="#"><span className="material-symbols-outlined">mail</span></a>
+                </div>
+              </div>
+            </ScrollFadeUp>
+            <ScrollFadeUp delay={0.2}>
+              <div>
+                <h4 className="text-sm font-bold uppercase text-gray-600 mb-6 tracking-wider">Company</h4>
+                <ul className="space-y-3">
+                  <li><a className="text-gray-600 hover:text-black transition-colors text-sm" href="#">About Us</a></li>
+                  <li><a className="text-gray-600 hover:text-black transition-colors text-sm" href="#">Careers</a></li>
+                  <li><a className="text-gray-600 hover:text-black transition-colors text-sm" href="#">Press</a></li>
+                  <li><a className="text-gray-600 hover:text-black transition-colors text-sm" href="#">Sustainability</a></li>
+                </ul>
+              </div>
+            </ScrollFadeUp>
+            <ScrollFadeUp delay={0.3}>
+              <div>
+                <h4 className="text-sm font-bold uppercase text-gray-600 mb-6 tracking-wider">Contact</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-sm text-gray-600">
+                    <span className="material-symbols-outlined text-sm mt-0.5">location_on</span>
+                    <span>198/3 Moo.5 Saithai,<br/>Muang Krabi, Krabi, Thailand 81000</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-gray-600">
+                    <span className="material-symbols-outlined text-sm">call</span>
+                    <span>+66 631028788</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-sm text-gray-600">
+                    <span className="material-symbols-outlined text-sm">alternate_email</span>
+                    <span>info@northernallstar.com</span>
+                  </li>
+                </ul>
+              </div>
+            </ScrollFadeUp>
+          </div>
+          <ScrollFadeUp delay={0.4}>
+            <div className="border-t border-black/10 pt-8 flex flex-col md:flex-row items-center gap-4">
+              <p className="text-gray-600 text-sm md:flex-1 md:text-left">© 2026 Northern All Star Co., Ltd. All rights reserved.</p>
+              <p className="text-gray-600 text-sm md:flex-1 md:text-center">Design by 6CAT</p>
+              <div className="flex gap-6 md:flex-1 md:justify-end">
+                <a className="text-gray-600 hover:text-black text-sm" href="#">Privacy Policy</a>
+                <a className="text-gray-600 hover:text-black text-sm" href="#">Terms of Service</a>
               </div>
             </div>
-            <div>
-              <h4 className="text-sm font-bold uppercase text-gray-500 mb-6 tracking-wider">Company</h4>
-              <ul className="space-y-3">
-                <li><a className="text-gray-300 hover:text-white transition-colors text-sm" href="#">About Us</a></li>
-                <li><a className="text-gray-300 hover:text-white transition-colors text-sm" href="#">Careers</a></li>
-                <li><a className="text-gray-300 hover:text-white transition-colors text-sm" href="#">Press</a></li>
-                <li><a className="text-gray-300 hover:text-white transition-colors text-sm" href="#">Sustainability</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-sm font-bold uppercase text-gray-500 mb-6 tracking-wider">Contact</h4>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3 text-sm text-gray-300">
-                  <span className="material-symbols-outlined text-sm mt-0.5">location_on</span>
-                  <span>198/3 Moo.5 Saithai,<br/>Muang Krabi, Krabi, Thailand 81000</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm text-gray-300">
-                  <span className="material-symbols-outlined text-sm">call</span>
-                  <span>+66 631028788</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm text-gray-300">
-                  <span className="material-symbols-outlined text-sm">alternate_email</span>
-                  <span>info@northernallstar.com</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row items-center gap-4">
-            <p className="text-gray-500 text-sm md:flex-1 md:text-left">© 2026 Northern All Star Co., Ltd. All rights reserved.</p>
-            <p className="text-gray-500 text-sm md:flex-1 md:text-center">Design by 6CAT</p>
-            <div className="flex gap-6 md:flex-1 md:justify-end">
-              <a className="text-gray-500 hover:text-white text-sm" href="#">Privacy Policy</a>
-              <a className="text-gray-500 hover:text-white text-sm" href="#">Terms of Service</a>
-            </div>
-          </div>
+          </ScrollFadeUp>
         </div>
       </footer>
     </main>

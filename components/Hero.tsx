@@ -1,6 +1,10 @@
 import Image from "next/image";
 
-export default function Hero() {
+type HeroProps = {
+  onStartPlanning?: () => void;
+};
+
+export default function Hero({ onStartPlanning }: HeroProps) {
   return (
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -39,6 +43,11 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#services"
+            onClick={(event) => {
+              if (!onStartPlanning) return;
+              event.preventDefault();
+              onStartPlanning();
+            }}
             className="inline-block px-8 py-3 bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] text-white font-semibold rounded-lg shadow-lg shadow-[#A683BD]/30 hover:from-[#A683BD] hover:to-[#2A3F8B] transition-colors duration-300 text-center"
           >
             Explore Experiences
