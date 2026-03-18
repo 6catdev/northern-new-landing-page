@@ -53,6 +53,8 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const cardRefs = useRef<HTMLDivElement[]>([]);
   const trustedPartnerGridLogos = trustedPartnerLogos;
+  const whatsappLink = 'https://wa.me/66631028788';
+  const whatsappLabel = 'WhatsApp: +66 631028788';
   const rotations = useMemo(
     () => destinations.map(() => Math.random() * 20 - 10),
     [destinations.length]
@@ -155,9 +157,16 @@ export default function Home() {
               <a className="text-sm font-semibold text-black hover:text-gray-700 transition-colors cursor-pointer" onClick={() => handleNavClick('neptune')}>Neptune</a>
             </nav>
             <div className="hidden lg:block">
-              <button className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-colors shadow-lg shadow-[#A683BD]/30">
-                Partner With Us
-              </button>
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                title={whatsappLabel}
+                aria-label={whatsappLabel}
+                className="inline-flex bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-colors shadow-lg shadow-[#A683BD]/30"
+              >
+                Contact Us
+              </a>
             </div>
             <button
               aria-expanded={mobileMenuOpen}
@@ -178,9 +187,17 @@ export default function Home() {
               <button className="text-left text-base font-semibold text-black hover:text-gray-700 transition-colors" onClick={() => handleNavClick('what-we-do')}>What We Do</button>
               <button className="text-left text-base font-semibold text-black hover:text-gray-700 transition-colors" onClick={() => handleNavClick('destinations')}>Destinations</button>
               <button className="text-left text-base font-semibold text-black hover:text-gray-700 transition-colors" onClick={() => handleNavClick('neptune')}>Neptune</button>
-              <button className="mt-2 bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-colors w-full shadow-lg shadow-[#A683BD]/30">
-                Partner With Us
-              </button>
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                title={whatsappLabel}
+                aria-label={whatsappLabel}
+                onClick={() => setMobileMenuOpen(false)}
+                className="mt-2 bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-colors w-full shadow-lg shadow-[#A683BD]/30 text-center"
+              >
+                Contact Us
+              </a>
             </nav>
           </div>
         </div>
@@ -206,12 +223,22 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2 sm:pt-4 w-full max-w-md mx-auto px-4">
-                <button className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-sm sm:text-base md:text-lg font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl transition-all hover:scale-105 shadow-xl shadow-[#A683BD]/30 w-full">
-                  Explore Tours
+                <button
+                  className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-sm sm:text-base md:text-lg font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl transition-all hover:scale-105 shadow-xl shadow-[#A683BD]/30 w-full"
+                  onClick={() => handleNavClick('destinations')}
+                >
+                  Our destination
                 </button>
-                <button className="bg-transparent border-2 border-white text-white text-sm sm:text-base md:text-lg font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl transition-all hover:scale-105 hover:bg-white/10 w-full">
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={whatsappLabel}
+                  aria-label={whatsappLabel}
+                  className="bg-transparent border-2 border-white text-white text-sm sm:text-base md:text-lg font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl transition-all hover:scale-105 hover:bg-white/10 w-full"
+                >
                   Contact Us
-                </button>
+                </a>
               </div>
             </div>
           </ScrollFadeUp>
