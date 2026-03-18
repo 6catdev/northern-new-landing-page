@@ -4,31 +4,55 @@ import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import ScrollFadeUp from '@/components/ScrollFadeUp';
+import privateLongtailBoatImage from '@/image/เรือ_57_T02_4547 (1).jpg';
+import privateLongtailBeachImage from '@/image/เรือ_283_T02_5471 (1).jpg';
+import chiangRaiImage from '@/image/aleksandra-b-00E3Q9-unMU-unsplash.jpg';
+import chiangMaiImage from '@/image/image 22 (1).png';
+import bangkokImage from '@/image/sophia-isabela-YELsx76Nv9A-unsplash (1).jpg';
+import pattayaImage from '@/image/ryutaro-uozumi-lsdURl-_ktc-unsplash (1).jpg';
+import chonburiImage from '@/image/217995 (1).jpg';
+import samuiImage from '@/image/nehal-patel-Plr-yS4xiao-unsplash (1).jpg';
+import krabiImage from '@/image/โดรนเกาะห้อง_3_DJI_0027 (1).jpg';
+import phangNgaImage from '@/image/valeriy-ryasnyanskiy-L21lWCqTlfE-unsplash (1).jpg';
+import phuketImage from '@/image/set-sj-41h6fZ8KH9E-unsplash (1).jpg';
+import communityCollaborationImage from '@/image/1772425327671 (1).jpg';
+import agodaLogo from '@/logo/Agoda_ Cheap Flights & Hotels.png';
+import bookingLogo from '@/logo/Booking.com_ Hotels & Travel.png';
+import expediaLogo from '@/logo/Expedia_ Hotels, Flights, Cars.png';
+import klookLogo from '@/logo/Klook_ Travel & Activities.png';
+import travelokaLogo from '@/logo/Traveloka_ Book Hotel & Flight.png';
+import tripComLogo from '@/logo/Trip.com_ Book Flights, Hotels.png';
+import tripadvisorLogo from '@/logo/Tripadvisor_ Plan & Book Trips.png';
+import trivagoLogo from '@/logo/trivago_ Compare hotel prices.png';
+
+const trustedPartnerLogos = [
+  { key: 'agoda', src: agodaLogo.src, alt: 'Agoda logo' },
+  { key: 'booking', src: bookingLogo.src, alt: 'Booking.com logo' },
+  { key: 'expedia', src: expediaLogo.src, alt: 'Expedia logo' },
+  { key: 'klook', src: klookLogo.src, alt: 'Klook logo' },
+  { key: 'traveloka', src: travelokaLogo.src, alt: 'Traveloka logo' },
+  { key: 'tripcom', src: tripComLogo.src, alt: 'Trip.com logo' },
+  { key: 'tripadvisor', src: tripadvisorLogo.src, alt: 'Tripadvisor logo' },
+  { key: 'trivago', src: trivagoLogo.src, alt: 'trivago logo' },
+];
 
 export default function Home() {
   const destinations = [
-    { name: 'Chiang Rai', image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=1200&auto=format&fit=crop', description: 'Explore the Golden Triangle and White Temple' },
-    { name: 'Chiang Mai', image: 'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=1200&auto=format&fit=crop', description: 'Cultural heart of Northern Thailand' },
-    { name: 'Bangkok', image: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?q=80&w=1200&auto=format&fit=crop', description: 'Vibrant capital city with temples and markets' },
-    { name: 'Pattaya', image: 'https://images.unsplash.com/photo-1534008897995-27a23e859048?q=80&w=1200&auto=format&fit=crop', description: 'Beach resort city on the Eastern Gulf coast' },
-    { name: 'Chonburi', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop', description: 'Gateway to eastern coastal attractions' },
-    { name: 'Samui', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop', description: 'Tropical island paradise with pristine beaches' },
-    { name: 'Krabi', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop', description: 'Stunning limestone cliffs and clear waters' },
-    { name: 'Phang Nga', image: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?q=80&w=1200&auto=format&fit=crop', description: 'Famous for James Bond Island and sea caves' },
-    { name: 'Phuket', image: 'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?q=80&w=1200&auto=format&fit=crop', description: 'Thailand\'s largest island and beach destination' },
+    { name: 'Chiang Rai', image: chiangRaiImage.src, description: 'Explore the Golden Triangle and White Temple' },
+    { name: 'Chiang Mai', image: chiangMaiImage.src, description: 'Cultural heart of Northern Thailand' },
+    { name: 'Bangkok', image: bangkokImage.src, description: 'Vibrant capital city with temples and markets' },
+    { name: 'Pattaya', image: pattayaImage.src, description: 'Beach resort city on the Eastern Gulf coast' },
+    { name: 'Chonburi', image: chonburiImage.src, description: 'Gateway to eastern coastal attractions' },
+    { name: 'Samui', image: samuiImage.src, description: 'Tropical island paradise with pristine beaches' },
+    { name: 'Krabi', image: krabiImage.src, description: 'Stunning limestone cliffs and clear waters' },
+    { name: 'Phang Nga', image: phangNgaImage.src, description: 'Famous for James Bond Island and sea caves' },
+    { name: 'Phuket', image: phuketImage.src, description: 'Thailand\'s largest island and beach destination' },
   ];
 
   const [selectedDestination, setSelectedDestination] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const cardRefs = useRef<HTMLDivElement[]>([]);
-  const marqueeLogos = useMemo(
-    () => Array.from({ length: 9 }, (_, index) => ({
-      key: `klook-${index}`,
-      src: '/logo/klook.png',
-      alt: 'Klook logo',
-    })),
-    []
-  );
+  const trustedPartnerGridLogos = trustedPartnerLogos;
   const rotations = useMemo(
     () => destinations.map(() => Math.random() * 20 - 10),
     [destinations.length]
@@ -169,37 +193,23 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/60"></div>
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
-        <div className="relative z-10 max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-0 sm:mt-20">
+        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 text-center mt-0 sm:mt-20">
           <ScrollFadeUp>
-            <div className="flex flex-col items-center gap-8">
-              <div className="space-y-6 max-w-4xl">
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-2xl">
+            <div className="flex flex-col items-center gap-6 sm:gap-8 w-full max-w-4xl mx-auto">
+              <div className="space-y-4 sm:space-y-6 w-full">
+                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] drop-shadow-2xl px-4">
                   Elevating Thai <br/>
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] brightness-125">Travel Experiences</span>
                 </h1>
-                <p className="text-base sm:text-xl text-gray-100 max-w-2xl mx-auto drop-shadow-md">
+                <p className="text-sm sm:text-base md:text-xl text-gray-100 max-w-2xl mx-auto drop-shadow-md px-4">
                   The premier corporate travel group connecting the world to the hidden gems of Northern and Southern Thailand.
                 </p>
               </div>
-              <ul className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-primary-400 brightness-125 bg-white/10 p-1 rounded-full text-base">check_circle</span>
-                  <span className="text-sm sm:text-base font-semibold text-white tracking-wide drop-shadow-sm">Deep Local Expertise</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-primary-400 brightness-125 bg-white/10 p-1 rounded-full text-base">check_circle</span>
-                  <span className="text-sm sm:text-base font-semibold text-white tracking-wide drop-shadow-sm">Premium Owned Fleet</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-primary-400 brightness-125 bg-white/10 p-1 rounded-full text-base">check_circle</span>
-                  <span className="text-sm sm:text-base font-semibold text-white tracking-wide drop-shadow-sm">Curated Private Journeys</span>
-                </li>
-              </ul>
-              <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4 w-full">
-                <button className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-base sm:text-lg font-bold px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl transition-all hover:scale-105 shadow-xl shadow-[#A683BD]/30 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2 sm:pt-4 w-full max-w-md mx-auto px-4">
+                <button className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-sm sm:text-base md:text-lg font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl transition-all hover:scale-105 shadow-xl shadow-[#A683BD]/30 w-full">
                   Explore Tours
                 </button>
-                <button className="bg-transparent border-2 border-white text-white text-base sm:text-lg font-bold px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl transition-all hover:scale-105 hover:bg-white/10 w-full sm:w-auto">
+                <button className="bg-transparent border-2 border-white text-white text-sm sm:text-base md:text-lg font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl transition-all hover:scale-105 hover:bg-white/10 w-full">
                   Contact Us
                 </button>
               </div>
@@ -301,7 +311,7 @@ export default function Home() {
             <ScrollFadeUp delay={0.1}>
               <div className="group border border-neutral-border rounded-xl p-6 hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
                 <div className="h-48 bg-neutral-100 rounded-lg mb-6 overflow-hidden relative">
-                  <img alt="Tourists walking on a beach" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABb2G_dZhBTcvtWffNAsi3ZR2WI7um8ejaCUKaxk89zWmhI8Ctjw8qt0sjlJFLsFjo4dw5JdA5v_Icz3qS69X7dkB1xJyEww0NdhFz5IC5bS7gZhHzjwppUIcnr0pb-jTbe84YHiRR-4s_s8wBgCjJwY-B8VPv1gGRM5UJ3Vx7XuGJ3MBcZnL8OB-M2kxfNsEvcX3JBIf8eQO_SgEND3fh_QD3GOjT2P53FcT6jefthmpC1vvCitQQU89XUhvhcVSabN-4RRkMaS8"/>
+                  <img alt="Tourists walking on a beach" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={privateLongtailBoatImage.src}/>
                 </div>
                 <h3 className="text-lg font-bold text-neutral-text-main mb-2">Curated Tours</h3>
                 <p className="text-sm 2xl:text-base text-neutral-text-sub">Develop tours and activities that meet international standards in service, safety, and quality</p>
@@ -319,7 +329,7 @@ export default function Home() {
             <ScrollFadeUp delay={0.3}>
               <div className="group border border-neutral-border rounded-xl p-6 hover:border-primary-500 hover:shadow-lg transition-all cursor-default">
                 <div className="h-48 bg-neutral-100 rounded-lg mb-6 overflow-hidden relative">
-                  <img alt="Local community members interacting" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1r_DVTxUbJPgfMJmEL5_ds1ta7F7woIbaOCdnrz4M-TKXAsmi4Xzy2Sbuv9S1ORxC7KMW_DLapHSPA_QaJrz-L1re_giI6R83i3fYlR_SBqAO-vJD0FOnuLWvAlkILmWxVBj_Ofoj2H7KtgPSQa9TB47OPXF46pEyyCaqv7nUrn0AhsToBCU4SOzY7rnZknnvcKZh_dav3_l5HiazQl12TTkDc_9Zn14xUokZyyEt8uzOP4ujXmbKyDDzLkdjtlhOQChtLRb8AdU"/>
+                  <img alt="Local community members interacting" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={communityCollaborationImage.src}/>
                 </div>
                 <h3 className="text-lg font-bold text-neutral-text-main mb-2">Community Collaboration</h3>
                 <p className="text-sm 2xl:text-base text-neutral-text-sub">Support local tourism businesses by connecting them with global travelers</p>
@@ -452,7 +462,7 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-5 relative rounded-3xl overflow-hidden border border-neutral-200 aspect-[4/3] shadow-sm">
-              <img alt="Luxury boat on water" className="w-full h-full object-cover" src="/images/n1.jpg"/>
+              <img alt="Luxury boat on water" className="w-full h-full object-cover" src={privateLongtailBeachImage.src}/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
             </div>
 
@@ -474,7 +484,7 @@ export default function Home() {
               <img
                 alt="Luxury boat interior seating"
                 className="w-full h-full object-cover"
-                src="/images/n2.jpg"
+                src={privateLongtailBoatImage.src}
               />
             </div>
 
@@ -515,37 +525,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Logo Marquee Section */}
-      <section className="bg-white py-16 md:py-20 relative z-10 overflow-hidden">
-        <ScrollFadeUp>
-          <div className="max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-            <p className="text-center text-sm font-semibold text-neutral-text-sub uppercase tracking-widest">Trusted by</p>
-          </div>
-        </ScrollFadeUp>
-        <div className="relative overflow-hidden">
-          <div className="flex w-max animate-marquee will-change-transform">
-            <div className="flex min-w-max items-center gap-8 lg:gap-10 px-6">
-              {marqueeLogos.map((logo) => (
-                <div key={`${logo.key}-a`} className="w-24 sm:w-28 md:w-32 lg:w-40 shrink-0 flex items-center justify-center">
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-10 sm:h-11 md:h-12 lg:h-14 w-full object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="flex min-w-max items-center gap-8 lg:gap-10 px-6">
-              {marqueeLogos.map((logo) => (
-                <div key={`${logo.key}-b`} className="w-24 sm:w-28 md:w-32 lg:w-40 shrink-0 flex items-center justify-center">
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-10 sm:h-11 md:h-12 lg:h-14 w-full object-contain"
-                  />
-                </div>
-              ))}
-            </div>
+      {/* Trusted Partners Grid Section */}
+      <section className="bg-white py-16 md:py-20 relative z-10">
+        <div className="max-w-[1280px] 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollFadeUp>
+            <p className="text-center text-sm font-semibold text-neutral-text-sub uppercase tracking-widest mb-10">Trusted by</p>
+          </ScrollFadeUp>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+            {trustedPartnerGridLogos.map((logo, index) => (
+              <div key={`${logo.key}-${index}`} className="h-28 md:h-32 rounded-2xl border border-neutral-200 bg-white shadow-sm flex items-center justify-center p-3 md:p-4">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-14 md:h-16 w-full object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -565,9 +560,23 @@ export default function Home() {
                   Connecting the world to Thailand&apos;s wonders through premium service and local authenticity.
                 </p>
                 <div className="flex gap-4">
-                  <a className="text-gray-600 hover:text-black transition-colors" href="#"><span className="material-symbols-outlined">public</span></a>
-                  <a className="text-gray-600 hover:text-black transition-colors" href="#"><span className="material-symbols-outlined">photo_camera</span></a>
-                  <a className="text-gray-600 hover:text-black transition-colors" href="#"><span className="material-symbols-outlined">mail</span></a>
+                  <a className="text-gray-600 hover:text-black transition-colors" href="https://www.facebook.com/northernas" target="_blank" rel="noreferrer" aria-label="Northern All Star Facebook">
+                    <svg aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                  </a>
+                  <a className="text-gray-600 hover:text-black transition-colors" href="https://www.instagram.com/northern.as/" target="_blank" rel="noreferrer" aria-label="Northern All Star Instagram">
+                    <svg aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+                      <rect height="20" rx="5" ry="5" width="20" x="2" y="2" />
+                      <path d="M16 11.37a4 4 0 1 1-7.91 1.17 4 4 0 0 1 7.91-1.17z" />
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
+                  </a>
+                  <a className="text-gray-600 hover:text-black transition-colors" href="https://www.tiktok.com/@northern.all.star" target="_blank" rel="noreferrer" aria-label="Northern All Star TikTok">
+                    <svg aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+                      <path d="M9 12a4 4 0 1 0 4 4V4c0 1.105.895 2 2 2h2" />
+                    </svg>
+                  </a>
                 </div>
               </div>
             </ScrollFadeUp>
