@@ -224,7 +224,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col sm:flex-row justify-center gap-4 pt-2 sm:pt-4 w-full max-w-md mx-auto px-4">
                 <button
-                  className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-sm sm:text-base md:text-lg font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl transition-all hover:scale-105 shadow-xl shadow-[#A683BD]/30 w-full"
+                  className="bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] hover:from-[#A683BD] hover:to-[#2A3F8B] text-white text-sm sm:text-base md:text-lg font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl transition-all hover:scale-105 shadow-xl shadow-[#A683BD]/30 w-full sm:w-auto whitespace-nowrap"
                   onClick={() => handleNavClick('destinations')}
                 >
                   Our destination
@@ -235,7 +235,7 @@ export default function Home() {
                   rel="noreferrer"
                   title={whatsappLabel}
                   aria-label={whatsappLabel}
-                  className="bg-transparent border-2 border-white text-white text-sm sm:text-base md:text-lg font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl transition-all hover:scale-105 hover:bg-white/10 w-full"
+                  className="bg-transparent border-2 border-white text-white text-sm sm:text-base md:text-lg font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl transition-all hover:scale-105 hover:bg-white/10 w-full sm:w-auto whitespace-nowrap"
                 >
                   Contact Us
                 </a>
