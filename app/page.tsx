@@ -16,6 +16,7 @@ import krabiImage from '@/image/โดรนเกาะห้อง_3_DJI_0027 
 import phangNgaImage from '@/image/valeriy-ryasnyanskiy-L21lWCqTlfE-unsplash (1).jpg';
 import phuketImage from '@/image/set-sj-41h6fZ8KH9E-unsplash (1).jpg';
 import communityCollaborationImage from '@/image/1772425327671 (1).jpg';
+import speedboatJoinInImage from '@/image/mmexport1751444389860.jpg';
 import agodaLogo from '@/logo/Agoda_ Cheap Flights & Hotels.png';
 import bookingLogo from '@/logo/Booking.com_ Hotels & Travel.png';
 import expediaLogo from '@/logo/Expedia_ Hotels, Flights, Cars.png';
@@ -519,7 +520,7 @@ export default function Home() {
               <img
                 alt="Luxury boat interior lounge"
                 className="w-full h-full object-cover"
-                src="/images/n3.jpg"
+                src={speedboatJoinInImage.src}
               />
             </div>
           </div>
